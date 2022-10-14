@@ -1,0 +1,3 @@
+[submodule "Sherlog"]
+	path = Sherlog
+	url = https://github.com/sschmid/Sherlog.git
