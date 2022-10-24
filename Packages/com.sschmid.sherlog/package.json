@@ -1,0 +1,21 @@
+{
+  "name": "com.sschmid.sherlog",
+  "version": "1.0.0",
+  "displayName": "Sherlog",
+  "description": "Flexible logging for C# and Unity",
+  "unity": "2021.3",
+  "documentationUrl": "https://github.com/sschmid/Sherlog",
+  "changelogUrl": "https://github.com/sschmid/Sherlog/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/sschmid/Sherlog/blob/main/LICENSE.md",
+  "dependencies": { },
+  "keywords": [
+    "tcp",
+    "unity",
+    "dotnet",
+    "logger",
+    "logging"
+  ],
+  "author": {
+    "name": "sschmid"
+  }
+}
