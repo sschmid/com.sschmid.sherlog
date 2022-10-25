@@ -6,6 +6,15 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.sschmid.sherlog.appenders": {
+      "version": "file:com.sschmid.sherlog.appenders",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.sschmid.sherlog": "1.0.0",
+        "com.sschmid.tcpeasy": "1.0.0"
+      }
+    },
     "com.sschmid.sherlog.formatters": {
       "version": "file:com.sschmid.sherlog.formatters",
       "depth": 0,
