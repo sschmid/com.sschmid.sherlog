@@ -30,7 +30,7 @@ MonoBehaviour:
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.openupm
-    - com.sschmid.tcpeasy
+    - com.sschmid
     m_IsDefault: 0
     m_Capabilities: 0
   m_UserSelectedRegistryName: package.openupm.com

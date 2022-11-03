@@ -48,7 +48,7 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "com.openupm",
-        "com.sschmid.tcpeasy"
+        "com.sschmid"
       ]
     }
   ]
