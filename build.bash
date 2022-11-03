@@ -33,7 +33,7 @@ get_unity_dependencies() {
   while read -r reference; do
     reference="$(basename "${reference}" .csproj)"
     echo -e "${PACKAGE_PREFIX}.${reference,,}\t$(xmllint --xpath 'string(/Project/PropertyGroup/Version)' "${PROJECT}/src/${reference}/${reference}.csproj")"
-    get_project_references "${PROJECT}/src/${reference}/${reference}.csproj"
+    get_unity_dependencies "${PROJECT}/src/${reference}/${reference}.csproj"
   done < <(dotnet list "$1" reference | tail -n +3)
 
   dotnet restore "$1" > /dev/null
