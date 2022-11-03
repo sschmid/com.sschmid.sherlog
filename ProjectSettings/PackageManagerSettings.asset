@@ -30,8 +30,6 @@ MonoBehaviour:
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.openupm
-    - com.sschmid.sherlog
-    - com.sschmid.sherlog.formatters
     - com.sschmid.tcpeasy
     m_IsDefault: 0
     m_Capabilities: 0
