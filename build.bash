@@ -11,35 +11,31 @@ declare -A PROJECTS=(
   [Sherlog.Formatters]=Runtime
 )
 
-get_project_references() {
-  local reference
+get_dependencies() {
+  local -i upm=0
+  local options
+
+  while (($#)); do case "$1" in
+    --unity-package) shift; upm=1; options="--unity-package" ;;
+    --) shift; break ;; *) break ;;
+  esac done
+
+  local reference reference_csproj
   while read -r reference; do
     reference="$(basename "${reference}" .csproj)"
-    echo "${reference}"
-    get_project_references "${PROJECT}/src/${reference}/${reference}.csproj"
-  done < <(dotnet list "$1" reference | tail -n +3)
-}
-
-get_project_packages() {
-  dotnet restore "$1" > /dev/null
-  local package
-  while read -r package; do
-    [[ -z "${package}" ]] || echo "${package}"
-  done < <(dotnet list "$1" package -v quiet | tail -n +4 | awk '{print $2}')
-}
-
-get_unity_dependencies() {
-  local reference
-  while read -r reference; do
-    reference="$(basename "${reference}" .csproj)"
-    echo -e "${PACKAGE_PREFIX}.${reference,,}\t$(xmllint --xpath 'string(/Project/PropertyGroup/Version)' "${PROJECT}/src/${reference}/${reference}.csproj")"
-    get_unity_dependencies "${PROJECT}/src/${reference}/${reference}.csproj"
+    reference_csproj="${PROJECT}/src/${reference}/${reference}.csproj"
+    ((upm)) && reference="${PACKAGE_PREFIX}.${reference,,}"
+    echo -e "${reference}\t$(xmllint --xpath 'string(/Project/PropertyGroup/Version)' "${reference_csproj}")"
+    ((upm)) || get_dependencies ${options:+"${options}"} "${reference_csproj}"
   done < <(dotnet list "$1" reference | tail -n +3)
 
   dotnet restore "$1" > /dev/null
   local package
   while read -r package; do
-    [[ -z "${package}" ]] || echo "${PACKAGE_PREFIX}.${package,,}"
+    if [[ -n "${package}" ]]; then
+      ((upm)) && package="${PACKAGE_PREFIX}.${package,,}"
+      echo "${package}"
+    fi
   done < <(dotnet list "$1" package -v quiet | tail -n +4 | awk '{print $2 "\t" $3}')
 }
 
@@ -57,16 +53,14 @@ update() {
 
 generate_asmdef() {
   echo "Generate ${project}.asmdef"
-  local -a references packages project_dependencies
-  local dependencies platforms
-  dotnet restore "${csproj}" > /dev/null
-  mapfile -t references < <(get_project_references "${csproj}" | sort -u)
-  mapfile -t packages < <(get_project_packages "${csproj}" | sort -u)
-  project_dependencies=("${references[@]}" "${packages[@]}")
-  dependencies=""
-  for dependency in "${project_dependencies[@]}"; do
-    dependencies+=", \"${dependency}\""
-  done
+  local name version dependencies="" platforms
+  while read -r name version; do
+    dependencies+="\n    \"${name}\","
+  done < <(get_dependencies "${csproj}" | sort -u)
+  if [[ -n "${dependencies}" ]]
+  then dependencies="[ ${dependencies::-1}\n  ]"
+  else dependencies="[]"
+  fi
   if [[ "${package_folder}" == "Editor" ]]
   then platforms='"Editor"'
   else platforms=""
@@ -76,7 +70,7 @@ generate_asmdef() {
 {
   "name": "${project}",
   "rootNamespace": "${project}",
-  "references": [${dependencies:2}],
+  "references": $(echo -e "${dependencies}"),
   "includePlatforms": [${platforms}],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
@@ -92,13 +86,13 @@ EOF
 
 generate_package_json() {
   echo "Generate ${project} package.json"
-  local name version dependency_json=""
+  local name version dependencies=""
   while read -r name version; do
-    dependency_json+="\n    \"${name}\": \"${version}\","
-  done < <(get_unity_dependencies "${csproj}" | sort -u)
-  if [[ -n "${dependency_json}" ]]
-  then dependency_json="{ ${dependency_json::-1}\n  }"
-  else dependency_json="{ }"
+    dependencies+="\n    \"${name}\": \"${version}\","
+  done < <(get_dependencies --unity-package "${csproj}" | sort -u)
+  if [[ -n "${dependencies}" ]]
+  then dependencies="{ ${dependencies::-1}\n  }"
+  else dependencies="{ }"
   fi
 
   cat <<EOF >"${dist}/package.json"
@@ -111,7 +105,7 @@ generate_package_json() {
   "documentationUrl": "https://github.com/sschmid/Sherlog",
   "changelogUrl": "https://github.com/sschmid/Sherlog/blob/main/CHANGELOG.md",
   "licensesUrl": "https://github.com/sschmid/Sherlog/blob/main/LICENSE.md",
-  "dependencies": $(echo -e "${dependency_json}"),
+  "dependencies": $(echo -e "${dependencies}"),
   "keywords": [
     "tcp",
     "unity",
