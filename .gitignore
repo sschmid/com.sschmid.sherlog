@@ -23,4 +23,4 @@ UserSettings
 *.sln
 *.csproj
 *.unitypackage
-RiderScriptEditorPersistedState.asset
+ProjectSettings/RiderScriptEditorPersistedState.asset
