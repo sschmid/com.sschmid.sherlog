@@ -1,6 +1,6 @@
 {
   "name": "com.sschmid.sherlog.appenders",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "Sherlog.Appenders",
   "description": "Flexible logging for C# and Unity",
   "unity": "2021.3",
@@ -9,7 +9,7 @@
   "licensesUrl": "https://github.com/sschmid/Sherlog/blob/main/LICENSE.md",
   "dependencies": { 
     "com.sschmid.sherlog": "1.0.0",
-    "com.sschmid.tcpeasy": "1.0.0"
+    "com.sschmid.tcpeasy": "1.0.1"
   },
   "keywords": [
     "tcp",
