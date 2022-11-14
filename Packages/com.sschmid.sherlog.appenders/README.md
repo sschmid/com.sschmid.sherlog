@@ -10,15 +10,17 @@ the box so you can receive log messages from other devices over the air.
 [![Coverage Status](https://coveralls.io/repos/github/sschmid/Sherlog/badge.svg)](https://coveralls.io/github/sschmid/Sherlog)
 [![Nuget](https://img.shields.io/nuget/dt/Sherlog)](https://www.nuget.org/packages/Sherlog)
 [![License: MIT](https://img.shields.io/github/license/sschmid/Sherlog)](https://github.com/sschmid/Sherlog/blob/main/LICENSE.md)
-[![](https://img.shields.io/twitter/follow/s_schmid)][twitter-sschmid]
+[![Twitter](https://img.shields.io/twitter/follow/s_schmid)][twitter-sschmid]
 
 # Install
 
-|                    | NuGet                                                                                                            | Unity                                                                                                                                                                                         |
-|:-------------------|:-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Sherlog            | [![Nuget](https://img.shields.io/nuget/v/Sherlog)](https://www.nuget.org/packages/Sherlog)                       | [![openupm](https://img.shields.io/npm/v/com.sschmid.sherlog?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.sschmid.sherlog)                       |
-| Sherlog.Appenders  | [![Nuget](https://img.shields.io/nuget/v/Sherlog.Appenders)](https://www.nuget.org/packages/Sherlog.Appenders)   | [![openupm](https://img.shields.io/npm/v/com.sschmid.sherlog.appenders?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.sschmid.sherlog.appenders)   |
-| Sherlog.Formatters | [![Nuget](https://img.shields.io/nuget/v/Sherlog.Formatters)](https://www.nuget.org/packages/Sherlog.Formatters) | [![openupm](https://img.shields.io/npm/v/com.sschmid.sherlog.formatters?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.sschmid.sherlog.formatters) |
+|                    | NuGet                                                                                                            | Unity Packages on [OpenUPM](https://openupm.com)                                                                                                                                                                     |
+|:-------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Sherlog            | [![Nuget](https://img.shields.io/nuget/v/Sherlog)](https://www.nuget.org/packages/Sherlog)                       | [![openupm](https://img.shields.io/npm/v/com.sschmid.sherlog?label=com.sschmid.sherlog&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.sschmid.sherlog)                                  |
+| Sherlog.Appenders  | [![Nuget](https://img.shields.io/nuget/v/Sherlog.Appenders)](https://www.nuget.org/packages/Sherlog.Appenders)   | [![openupm](https://img.shields.io/npm/v/com.sschmid.sherlog.appenders?label=com.sschmid.sherlog.appenders&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.sschmid.sherlog.appenders)    |
+| Sherlog.Formatters | [![Nuget](https://img.shields.io/nuget/v/Sherlog.Formatters)](https://www.nuget.org/packages/Sherlog.Formatters) | [![openupm](https://img.shields.io/npm/v/com.sschmid.sherlog.formatters?label=com.sschmid.sherlog.formatters&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.sschmid.sherlog.formatters) |
+
+Automated Unity Package Releases: https://github.com/sschmid/com.sschmid.sherlog
 
 # Quick Start
 

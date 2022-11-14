@@ -1,7 +1,10 @@
 {
   "name": "Sherlog.Appenders",
   "rootNamespace": "Sherlog.Appenders",
-  "references": ["Sherlog", "TCPeasy"],
+  "references": [ 
+    "Sherlog",
+    "TCPeasy"
+  ],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,

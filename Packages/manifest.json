@@ -41,7 +41,7 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
     "com.sschmid.sherlog": "1.0.0",
-    "com.sschmid.tcpeasy": "1.0.0"
+    "com.sschmid.tcpeasy": "1.0.1"
   },
   "enableLockFile": false,
   "resolutionStrategy": "highestMinor",
