@@ -39,15 +39,20 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.sschmid.sherlog": "1.0.0",
+    "com.sschmid.tcpeasy": "1.0.0"
   },
+  "enableLockFile": false,
+  "resolutionStrategy": "highestMinor",
   "scopedRegistries": [
     {
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
         "com.openupm",
-        "com.sschmid"
+        "com.sschmid.sherlog",
+        "com.sschmid.tcpeasy"
       ]
     }
   ]
