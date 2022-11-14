@@ -1,6 +1,6 @@
 {
   "name": "com.sschmid.sherlog.formatters",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "displayName": "Sherlog.Formatters",
   "description": "Flexible logging for C# and Unity",
   "unity": "2021.3",
