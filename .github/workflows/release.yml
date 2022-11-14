@@ -11,6 +11,10 @@ on:
           - Sherlog
           - Sherlog.Appenders
           - Sherlog.Formatters
+      commit:
+        description: "Commit hash"
+        required: true
+        type: string
 
 concurrency: release
 
@@ -21,7 +25,14 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v3
         with:
+          fetch-depth: 0
           submodules: 'recursive'
+
+      - name: "Checkout Sherlog@${{ inputs.commit }}"
+        run: |
+          cd Sherlog
+          git switch main
+          git reset --hard ${{ inputs.commit }}
 
       - name: "Install dependencies"
         run: |
